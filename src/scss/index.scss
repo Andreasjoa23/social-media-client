@@ -1,21 +1,21 @@
-@import '../../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
+@import "../../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css";
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 
-  [data-visible='loggedIn'] {
+  [data-visible="loggedIn"] {
     display: none;
   }
 
-  [data-visible='loggedOut'] {
+  [data-visible="loggedOut"] {
     display: initial;
   }
 
   &.logged-in {
-    [data-visible='loggedIn'] {
+    [data-visible="loggedIn"] {
       display: initial;
     }
-    [data-visible='loggedOut'] {
+    [data-visible="loggedOut"] {
       display: none;
     }
   }
@@ -59,7 +59,7 @@ body {
     position: relative;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       width: 0;
@@ -95,7 +95,7 @@ body {
       text-align: right;
 
       &:before {
-        content: '';
+        content: "";
         left: unset;
         right: 0;
         bottom: 0;
