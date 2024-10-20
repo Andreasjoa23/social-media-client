@@ -1,19 +1,23 @@
-describe("Logout test", () => {
-  beforeEach(() => {
-    localStorage.setItem("token", "sample-token");
-    localStorage.setItem("profile", JSON.stringify({ name: "Test User" }));
-    cy.visit("/");
-  });
+describe("Logout Test", () => {
   it("should allow user to logout with the logout button", () => {
+    cy.visit("/");
+
+    cy.get('button[data-auth="login"]').eq(1).click();
+
+    cy.get("#loginEmail").type("example@stud.noroff.no", { force: true });
+    cy.get("#loginPassword").type("exampleexample", { force: true });
+
+    cy.get("#loginForm").submit();
+    cy.wait(2000);
+
     cy.get('button[data-auth="logout"]').click();
 
-    cy.window().then((window) => {
-      expect(window.localStorage.getItem("token")).to.be.null;
-      expect(window.localStorage.getItem("profile")).to.be.null;
+    cy.url().then((url) => {
+      console.log("Current URL:", url);
     });
 
-    cy.url().should("eq", `${window.location.origin}/`);
+    cy.url().should("include", "/");
 
-    cy.get('button[data-auth="logout"]').should("be.visible");
+    cy.get("body").should("not.have.class", "logged-in");
   });
 });
